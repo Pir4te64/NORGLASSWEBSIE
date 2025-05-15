@@ -1,0 +1,28 @@
+// src/App.jsx
+import React from 'react';
+import SmoothCursor from './components/ui/smooth-cursor/SmoothCursor.jsx';
+import Navbar from './components/Navbar/Navbar.jsx';
+import Inicio from './sections/Inicio.jsx';
+import Soluciones from './sections/Soluciones.jsx';
+import Caracteristicas from './sections/Caracteristicas.jsx';
+import Tecnologia from './sections/Tecnologia.jsx';
+import Contacto from './sections/Contacto.jsx';
+import Footer from './components/Footer/Footer.jsx';
+
+export default function App() {
+  return (
+    <div className="min-h-screen bg-gray-100">
+      <SmoothCursor />
+      <Navbar />
+      <main className="container mx-auto px-4">
+        <Inicio />
+        <Soluciones />
+        <Caracteristicas />
+        <Tecnologia />
+        <Contacto />
+      </main>
+      {/* Footer fuera del container */}
+      <Footer />
+    </div>
+  );
+}
