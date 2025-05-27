@@ -4,10 +4,13 @@ import Spline from '@splinetool/react-spline';
 
 export default function Inicio() {
   return (
-    <section id="inicio" className="py-20 bg-gradient-to-b from-white to-gray-50">
+    <section id="inicio" className="min-h-screen bg-gradient-to-b from-white to-gray-50 flex items-center">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           <div className="w-full lg:w-1/2">
+          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">
+              Norglass
+            </h1>
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               Innovación en Vidrio Laminado
             </h1>
@@ -22,8 +25,8 @@ export default function Inicio() {
               Contactar
             </a>
           </div>
-          <div className="w-full lg:w-1/2 h-[400px] rounded-2xl overflow-hidden">
-            <Spline scene="https://prod.spline.design/mxh-lN4LSsexh5Rg/scene.splinecode" />
+          <div className="w-full lg:w-1/2 h-[600px] rounded-2xl overflow-hidden">
+            <Spline scene="https://prod.spline.design/vFZXaYpCIYoqk3Xh/scene.splinecode"/>
           </div>
         </div>
       </div>

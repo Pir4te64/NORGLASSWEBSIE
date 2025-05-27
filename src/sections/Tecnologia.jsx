@@ -32,40 +32,48 @@ const products = [
 
 export default function Tecnologia() {
   return (
-    <section id="tecnologia" className="bg-blue-50 py-20 px-8 lg:px-32">
-      <div className="max-w-7xl mx-auto space-y-6">
-        {/* Título */}
-        <h2 className="text-3xl lg:text-4xl font-bold text-center">
-          Tecnología y Diseño en Vidrio:{' '}
-          <span className="text-blue-500">
-            Soluciones que Definen el Futuro de la Construcción
-          </span>
-        </h2>
-        {/* Subtítulo */}
-        <p className="text-center text-gray-500">
-          Explora nuestra gama de Vidrios Laminados 3+3, DVH y Espejos – Seguridad, Aislamiento y
-          Estética para proyectos arquitectónicos de alto impacto
-        </p>
+    <section id="tecnologia" className="min-h-screen bg-blue-50 flex items-center">
+      <div className="max-w-7xl mx-auto px-8 lg:px-32 py-20">
+        <div className="space-y-12">
+          {/* Título */}
+          <div className="text-center space-y-4">
+            <h2 className="text-4xl lg:text-5xl font-bold">
+              Tecnología y Diseño en Vidrio:{' '}
+              <span className="text-primary">
+                Soluciones que Definen el Futuro de la Construcción
+              </span>
+            </h2>
+            {/* Subtítulo */}
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Explora nuestra gama de Vidrios Laminados 3+3, DVH y Espejos – Seguridad, Aislamiento y
+              Estética para proyectos arquitectónicos de alto impacto
+            </p>
+          </div>
 
-        {/* Cards */}
-        <div className="grid gap-12 grid-cols-1 lg:grid-cols-3">
-          {products.map((p) => (
-            <div key={p.title} className="flex flex-col space-y-4">
-              <img
-                src={p.img}
-                alt={p.title}
-                className="w-full rounded-2xl object-cover shadow-sm"
-              />
-              <div className="space-y-2">
-                <h3 className="text-xl font-semibold">{p.title}</h3>
-                <ul className="list-disc list-inside text-gray-600 space-y-1">
-                  {p.bullets.map((b) => (
-                    <li key={b}>{b}</li>
-                  ))}
-                </ul>
+          {/* Cards */}
+          <div className="grid gap-8 grid-cols-1 lg:grid-cols-3">
+            {products.map((p) => (
+              <div key={p.title} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <div className="h-[300px]">
+                  <img
+                    src={p.img}
+                    alt={p.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-6 space-y-4">
+                  <h3 className="text-2xl font-semibold text-gray-900">{p.title}</h3>
+                  <ul className="space-y-3">
+                    {p.bullets.map((b) => (
+                      <li key={b} className="text-gray-600 leading-relaxed">
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -16,7 +16,7 @@ export default function Navbar() {
         <a
           href="#inicio"
           onClick={scrollTo('inicio')}
-          className="text-2xl font-bold hover:text-primary transition"
+          className="text-2xl font-bold text-primary transition"
         >
           NORGLASS
         </a>
