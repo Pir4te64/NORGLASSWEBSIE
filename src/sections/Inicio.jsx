@@ -26,7 +26,7 @@ export default function Inicio() {
             </a>
           </div>
           <div className="w-full lg:w-1/2 h-[600px] rounded-2xl overflow-hidden">
-            <Spline scene="https://prod.spline.design/vFZXaYpCIYoqk3Xh/scene.splinecode"/>
+            <Spline scene="https://prod.spline.design/1R8LkuWqjB-1A9mZ/scene.splinecode"/>
           </div>
         </div>
       </div>
