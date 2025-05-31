@@ -1,6 +1,5 @@
 // src/App.jsx
 import React from 'react';
-import SmoothCursor from './components/ui/smooth-cursor/SmoothCursor.jsx';
 import Navbar from './components/Navbar/Navbar.jsx';
 import Inicio from './sections/Inicio.jsx';
 import Soluciones from './sections/Soluciones.jsx';
@@ -12,7 +11,6 @@ import Footer from './components/Footer/Footer.jsx';
 export default function App() {
   return (
     <div className="min-h-screen bg-gray-100">
-      <SmoothCursor />
       <Navbar />
       <main className="container mx-auto px-4">
         <Inicio />
