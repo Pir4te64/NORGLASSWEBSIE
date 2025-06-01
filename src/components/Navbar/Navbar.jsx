@@ -1,30 +1,26 @@
-import React from 'react';
-import ContactButton from '../ContactButton/ContactButton.jsx';
+import React from "react";
+import ContactButton from "../ContactButton/ContactButton.jsx";
 
 export default function Navbar() {
   const scrollTo = (id) => (e) => {
     e.preventDefault();
     const el = document.getElementById(id);
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
   return (
     <nav className="sticky top-0 bg-white z-50 shadow-lg shadow-blue-500/20">
       <div className="container mx-auto flex items-center py-4 px-6 justify-start">
-        <a
-          href="#inicio"
-          onClick={scrollTo('inicio')}
-          className="text-2xl font-bold text-primary transition"
-        >
-          NORGLASS
+        <a href="#inicio" onClick={scrollTo("inicio")} className="transition">
+          <img src="/logo.svg" alt="Norglass logo" className="h-8 w-auto" />
         </a>
         <ul className="hidden md:flex space-x-8 ml-8">
           <li>
             <a
               href="#inicio"
-              onClick={scrollTo('inicio')}
+              onClick={scrollTo("inicio")}
               className="hover:text-primary transition"
             >
               Inicio
@@ -33,7 +29,7 @@ export default function Navbar() {
           <li>
             <a
               href="#soluciones"
-              onClick={scrollTo('soluciones')}
+              onClick={scrollTo("soluciones")}
               className="hover:text-primary transition"
             >
               Soluciones
@@ -42,7 +38,7 @@ export default function Navbar() {
           <li>
             <a
               href="#caracteristicas"
-              onClick={scrollTo('caracteristicas')}
+              onClick={scrollTo("caracteristicas")}
               className="hover:text-primary transition"
             >
               Características
@@ -51,7 +47,7 @@ export default function Navbar() {
           <li>
             <a
               href="#tecnologia"
-              onClick={scrollTo('tecnologia')}
+              onClick={scrollTo("tecnologia")}
               className="hover:text-primary transition"
             >
               Tecnología
@@ -60,7 +56,7 @@ export default function Navbar() {
           <li>
             <a
               href="#productos"
-              onClick={scrollTo('productos')}
+              onClick={scrollTo("productos")}
               className="hover:text-primary transition"
             >
               Productos

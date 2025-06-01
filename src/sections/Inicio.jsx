@@ -1,18 +1,18 @@
 // src/sections/Inicio.jsx
-import React from 'react';
-import Spline from '@splinetool/react-spline';
+import React from "react";
+import Spline from "@splinetool/react-spline";
 
 export default function Inicio() {
   return (
-    <section id="inicio" className="min-h-screen bg-gradient-to-b from-white to-gray-50 flex items-center">
+    <section
+      id="inicio"
+      className="min-h-screen bg-gradient-to-b from-white to-gray-50 flex items-center"
+    >
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           <div className="w-full lg:w-1/2">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">
-              Norglass
-            </h1>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Innovación en Vidrio Laminado
+            <h1 className="text-4xl md:text-5xl font-bold text-secondary mb-6">
+              Liderazgo Global <br /> en Vidrios Laminados{" "}
             </h1>
             <p className="text-lg text-gray-600 mb-8">
               Soluciones avanzadas en vidrio laminado para la industria moderna.
@@ -25,8 +25,12 @@ export default function Inicio() {
               Contactar
             </a>
           </div>
-          <div className="w-full lg:w-1/2 h-[600px] rounded-2xl overflow-hidden">
-            <img src="/DSC01396.png" alt="Vidrio laminado Norglass" className="w-full h-full object-cover object-left" />
+          <div className="w-full lg:w-1/2 h-[600px] rounded-2xl overflow-hidden p-0 m-0">
+            <img
+              src="/column.png"
+              alt="Vidrio laminado Norglass"
+              className="w-full h-full object-cover object-center p-0 m-0 border-0"
+            />
           </div>
         </div>
       </div>

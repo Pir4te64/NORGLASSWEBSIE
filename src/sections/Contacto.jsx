@@ -1,23 +1,23 @@
 // src/sections/Contacto.jsx
-import React, { useState } from 'react';
+import React, { useState } from "react";
 // Si prefieres importar la imagen desde src/assets:
 // import contactoHero from '../assets/contacto-hero.jpg';
 
 export default function Contacto() {
   const [form, setForm] = useState({
-    nombre: '',
-    email: '',
-    telefono: '',
-    mensaje: '',
+    nombre: "",
+    email: "",
+    telefono: "",
+    mensaje: "",
   });
 
   const handleChange = (e) =>
-    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Aquí tu lógica de envío (API, email, etc.)
-    console.log('Formulario enviado:', form);
+    console.log("Formulario enviado:", form);
   };
 
   return (
@@ -29,8 +29,9 @@ export default function Contacto() {
             ¡Transforme sus proyectos con vidrios de alta tecnología!
           </h2>
           <p className="text-gray-600">
-            Complete el formulario ahora y reciba asesoría personalizada, cotizaciones express y soluciones
-            adaptadas a sus necesidades arquitectónicas.
+            Complete el formulario ahora y reciba asesoría personalizada,
+            cotizaciones express y soluciones adaptadas a sus necesidades
+            arquitectónicas.
           </p>
           <form onSubmit={handleSubmit} className="space-y-4">
             <input
@@ -82,7 +83,7 @@ export default function Contacto() {
         <div className="rounded-2xl overflow-hidden shadow-lg">
           {/* Usar ruta pública: coloca la imagen en public/assets/contacto-hero.jpg */}
           <img
-            src="/assets/contacto-hero.jpg"
+            src="/15.png"
             alt="Asesoría de proyectos de vidrio laminado"
             className="w-full h-auto object-cover"
           />
