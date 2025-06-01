@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import ContactButton from "../ContactButton/ContactButton.jsx";
 
 export default function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const scrollTo = (id) => (e) => {
     e.preventDefault();
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
+      setIsMenuOpen(false); // Close menu after clicking a link
     }
   };
 
@@ -57,24 +60,78 @@ export default function Navbar() {
         <div className="ml-auto flex items-center">
           <ContactButton />
           <div className="md:hidden">
-            {/* Aquí podrías añadir lógica para menú móvil */}
-            <button aria-label="Abrir menú">
+            <button 
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
+              className="p-2"
+            >
               <svg
                 className="w-6 h-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+                {isMenuOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
               </svg>
             </button>
           </div>
         </div>
+      </div>
+      
+      {/* Mobile Menu */}
+      <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} bg-white border-t`}>
+        <ul className="px-6 py-4 space-y-4">
+          <li>
+            <a
+              href="#inicio"
+              onClick={scrollTo("inicio")}
+              className="block hover:text-primary transition"
+            >
+              Inicio
+            </a>
+          </li>
+          <li>
+            <a
+              href="#soluciones"
+              onClick={scrollTo("soluciones")}
+              className="block hover:text-primary transition"
+            >
+              Soluciones
+            </a>
+          </li>
+          <li>
+            <a
+              href="#caracteristicas"
+              onClick={scrollTo("caracteristicas")}
+              className="block hover:text-primary transition"
+            >
+              Características
+            </a>
+          </li>
+          <li>
+            <a
+              href="#tecnologia"
+              onClick={scrollTo("tecnologia")}
+              className="block hover:text-primary transition"
+            >
+              Productos
+            </a>
+          </li>
+        </ul>
       </div>
     </nav>
   );
