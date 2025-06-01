@@ -21,8 +21,11 @@ export default function Contacto() {
   };
 
   return (
-    <section id="contacto" className="bg-gray-100 py-20">
-      <div className="container mx-auto px-6 lg:px-32 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <section
+      id="contacto"
+      className="bg-gray-100 min-h-screen flex items-center"
+    >
+      <div className="container mx-auto px-6 lg:px-32 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-screen">
         {/* Columna izquierda: encabezado + formulario */}
         <div className="space-y-6">
           <h2 className="text-3xl lg:text-4xl font-extrabold leading-tight text-gray-900">

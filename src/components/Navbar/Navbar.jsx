@@ -50,15 +50,6 @@ export default function Navbar() {
               onClick={scrollTo("tecnologia")}
               className="hover:text-primary transition"
             >
-              Tecnología
-            </a>
-          </li>
-          <li>
-            <a
-              href="#productos"
-              onClick={scrollTo("productos")}
-              className="hover:text-primary transition"
-            >
               Productos
             </a>
           </li>
