@@ -26,7 +26,7 @@ export default function Inicio() {
             </a>
           </div>
           <div className="w-full lg:w-1/2 h-[600px] rounded-2xl overflow-hidden">
-            <Spline scene="https://prod.spline.design/vFZXaYpCIYoqk3Xh/scene.splinecode"/>
+            <img src="/DSC01396.png" alt="Vidrio laminado Norglass" className="w-full h-full object-cover object-left" />
           </div>
         </div>
       </div>

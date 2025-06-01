@@ -12,7 +12,7 @@ export default function Navbar() {
 
   return (
     <nav className="sticky top-0 bg-white z-50 shadow-lg shadow-blue-500/20">
-      <div className="container mx-auto flex items-center justify-between py-4 px-6">
+      <div className="container mx-auto flex items-center py-4 px-6 justify-start">
         <a
           href="#inicio"
           onClick={scrollTo('inicio')}
@@ -20,7 +20,7 @@ export default function Navbar() {
         >
           NORGLASS
         </a>
-        <ul className="hidden md:flex space-x-8">
+        <ul className="hidden md:flex space-x-8 ml-8">
           <li>
             <a
               href="#inicio"
@@ -57,25 +57,36 @@ export default function Navbar() {
               Tecnología
             </a>
           </li>
-        </ul>
-        <ContactButton />
-        <div className="md:hidden">
-          {/* Aquí podrías añadir lógica para menú móvil */}
-          <button aria-label="Abrir menú">
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          <li>
+            <a
+              href="#productos"
+              onClick={scrollTo('productos')}
+              className="hover:text-primary transition"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </button>
+              Productos
+            </a>
+          </li>
+        </ul>
+        <div className="ml-auto flex items-center">
+          <ContactButton />
+          <div className="md:hidden">
+            {/* Aquí podrías añadir lógica para menú móvil */}
+            <button aria-label="Abrir menú">
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </nav>

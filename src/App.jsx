@@ -11,7 +11,7 @@ import Footer from "./components/Footer/Footer.jsx";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-gray-100 overflow-x-hidden">
+    <div className="min-h-screen bg-gray-100">
       <SmoothCursor />
       <Navbar />
       <main className="w-full max-w-[100vw] mx-auto px-4">
