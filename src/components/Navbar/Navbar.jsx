@@ -17,7 +17,7 @@ export default function Navbar() {
     <nav className="sticky top-0 bg-white z-50 shadow-lg shadow-blue-500/20">
       <div className="container mx-auto flex items-center py-4 px-6 justify-start">
         <a href="#inicio" onClick={scrollTo("inicio")} className="transition">
-          <img src="/logo.svg" alt="Norglass logo" className="h-8 w-auto" />
+          <img src="/logo.svg" alt="Norglass logo" className="h-10 w-auto" />
         </a>
         <ul className="hidden md:flex space-x-8 ml-8">
           <li>
@@ -60,7 +60,7 @@ export default function Navbar() {
         <div className="ml-auto flex items-center">
           <ContactButton />
           <div className="md:hidden">
-            <button 
+            <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
               className="p-2"
@@ -91,9 +91,13 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-      
+
       {/* Mobile Menu */}
-      <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} bg-white border-t`}>
+      <div
+        className={`md:hidden ${
+          isMenuOpen ? "block" : "hidden"
+        } bg-white border-t`}
+      >
         <ul className="px-6 py-4 space-y-4">
           <li>
             <a

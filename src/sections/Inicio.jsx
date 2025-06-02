@@ -11,7 +11,7 @@ export default function Inicio() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           <div className="w-full lg:w-1/2">
-            <h1 className="text-4xl md:text-5xl font-bold text-secondary mb-6">
+            <h1 className="mt-10 md:mt-0 text-4xl md:text-5xl font-bold text-secondary mb-6">
               Liderazgo Global <br /> en Vidrios Laminados{" "}
             </h1>
             <p className="text-lg text-gray-600 mb-8">
