@@ -1,5 +1,5 @@
 // src/sections/Tecnologia.jsx
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -47,13 +47,24 @@ const products = [
 export default function Tecnologia() {
   const swiperRef = useRef(null);
 
+  // Forzar actualización de Swiper en resize
+  useEffect(() => {
+    const handleResize = () => {
+      if (swiperRef.current && swiperRef.current.update) {
+        swiperRef.current.update();
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <section
       id="tecnologia"
       className="min-h-screen bg-blue-50 flex items-center"
     >
-      <div className="max-w-7xl mx-auto px-32 py-20">
-        <div className="space-y-12">
+      <div className="max-w-7xl mx-auto w-full px-4 md:px-32 py-20">
+        <div className="space-y-12 w-full">
           {/* Título y subtítulo según la imagen de referencia */}
           <div className="text-center space-y-1">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">
@@ -67,8 +78,8 @@ export default function Tecnologia() {
             </p>
           </div>
 
-          {/* Carrusel de tarjetas con Swiper y flechas minimalistas */}
-          <div className="relative w-full flex items-center">
+          {/* Carrusel de tarjetas con Swiper y flechas minimalistas para escritorio */}
+          <div className="relative w-full hidden md:flex items-center">
             <button
               className="absolute left-0 z-20 bg-white border border-gray-300 rounded-full w-12 h-12 flex items-center justify-center shadow hover:bg-blue-100 transition-all"
               style={{ transform: "translateX(-60%)" }}
@@ -105,7 +116,7 @@ export default function Tecnologia() {
             >
               {products.map((p) => (
                 <SwiperSlide key={p.title} className="h-full">
-                  <div className="bg-white rounded-2xl border border-blue-200 shadow transition-shadow duration-300 hover:shadow-md p-8 h-full flex flex-col justify-between min-h-[540px]">
+                  <div className="bg-white rounded-2xl border border-blue-300 shadow-sm p-8 h-full flex flex-col min-h-[540px]">
                     <div>
                       <div className="h-[320px] w-full mb-6">
                         <img
@@ -153,6 +164,57 @@ export default function Tecnologia() {
                 <polyline points="9 18 15 12 9 6" />
               </svg>
             </button>
+          </div>
+
+          {/* Carrusel especial para mobile, alineado con el contenedor */}
+          <div className="flex md:hidden w-full">
+            <Swiper
+              modules={[Autoplay]}
+              spaceBetween={12}
+              slidesPerView={1}
+              centeredSlides
+              autoplay={{ delay: 4000, disableOnInteraction: false }}
+              className="!pb-10 w-full"
+              observer={true}
+              observeParents={true}
+              onSwiper={(swiper) => {
+                swiperRef.current = swiper;
+              }}
+            >
+              {products.map((p) => (
+                <SwiperSlide
+                  key={p.title}
+                  className="flex justify-center w-full"
+                >
+                  <div className="bg-white rounded-2xl border border-blue-300 shadow-sm p-2 flex flex-col min-h-[220px] w-full">
+                    <div>
+                      <div className="h-[100px] w-full mb-2">
+                        <img
+                          src={p.img}
+                          alt={p.title}
+                          className="w-full h-full object-cover rounded-xl"
+                        />
+                      </div>
+                      <div className="px-1 pb-1 text-left">
+                        <h3 className="text-base font-bold text-gray-900 mb-1">
+                          {p.title}
+                        </h3>
+                        <ul className="space-y-1">
+                          {p.bullets.map((b) => (
+                            <li
+                              key={b}
+                              className="text-gray-600 leading-relaxed text-xs"
+                            >
+                              {b}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         </div>
       </div>

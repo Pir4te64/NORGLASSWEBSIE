@@ -29,7 +29,7 @@ export default function Soluciones() {
           </div>
 
           {/* Texto a la derecha */}
-          <div className="space-y-6 text-left flex flex-col justify-start h-full">
+          <div className="space-y-6 text-left flex flex-col justify-start h-full px-4 md:px-0">
             {/* Título */}
             <h2 className="text-3xl md:text-4xl font-bold leading-tight">
               <span className="text-primary">Soluciones Integrales</span> en
