@@ -1,6 +1,6 @@
 // src/sections/Contacto.jsx
 import React, { useState } from "react";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 // Si prefieres importar la imagen desde src/assets:
 // import contactoHero from '../assets/contacto-hero.jpg';
 

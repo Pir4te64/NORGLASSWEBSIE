@@ -17,7 +17,7 @@ export default function Navbar() {
     <nav className="sticky top-0 bg-white z-50 shadow-lg shadow-blue-500/20">
       <div className="container mx-auto flex items-center py-4 px-6 justify-start">
         <a href="#inicio" onClick={scrollTo("inicio")} className="transition">
-          <img src="/logo.svg" alt="Norglass logo" className="h-8 w-auto" />
+          <img src="/logo2.svg" alt="Norglass logo" className="h-8 w-auto" />
         </a>
         <ul className="hidden md:flex space-x-8 ml-8">
           <li>

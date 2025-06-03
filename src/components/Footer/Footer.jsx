@@ -8,21 +8,21 @@ export default function Footer() {
       <div className="max-w-screen-xl mx-auto px-4 flex flex-col items-center space-y-6">
         {/* Logos */}
         <div className="flex items-center justify-center w-full space-x-12">
-          <img src="/logo.svg" alt="Norglass logo" className="h-4 w-auto invert brightness-0" />
+          <img src="/logo.svg" alt="Norglass logo" className="h-3 sm:h-4 w-auto invert brightness-0" />
           <img 
             src="/agc-glass-seeklogo.svg" 
             alt="AGC Glass" 
-            className="h-14 w-auto invert brightness-0"
+            className="h-12 sm:h-14 w-auto invert brightness-0"
           />
           <img 
             src="/guardian-glass-seeklogo.svg" 
             alt="Guardian Glass" 
-            className="h-20 w-auto invert brightness-0"
+            className="h-16 sm:h-20 w-auto invert brightness-0"
           />
         </div>
 
         {/* Enlaces de navegación */}
-        <ul className="flex flex-wrap justify-center space-x-8">
+        <ul className="flex justify-center space-x-4 sm:space-x-8 text-base sm:text-lg font-semibold">
           <li>
             <a href="#inicio" className="hover:text-blue-500 transition">
               Inicio
