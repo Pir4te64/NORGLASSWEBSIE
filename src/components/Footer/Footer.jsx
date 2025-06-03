@@ -1,14 +1,25 @@
 import React from "react";
-import { FaInstagram, FaFacebookF, FaYoutube } from "react-icons/fa";
-import { SiX } from "react-icons/si";
+import { FaInstagram, FaFacebookF } from "react-icons/fa";
 
 export default function Footer() {
   return (
     <footer className="w-screen bg-black text-white py-10">
       {/* Contenedor centrado con ancho máximo */}
       <div className="max-w-screen-xl mx-auto px-4 flex flex-col items-center space-y-6">
-        {/* Logo */}
-        <div className="text-3xl font-bold tracking-wider">NORGLASS</div>
+        {/* Logos */}
+        <div className="flex items-center justify-center w-full space-x-12">
+          <img src="/logo.svg" alt="Norglass logo" className="h-4 w-auto invert brightness-0" />
+          <img 
+            src="/agc-glass-seeklogo.svg" 
+            alt="AGC Glass" 
+            className="h-14 w-auto invert brightness-0"
+          />
+          <img 
+            src="/guardian-glass-seeklogo.svg" 
+            alt="Guardian Glass" 
+            className="h-20 w-auto invert brightness-0"
+          />
+        </div>
 
         {/* Enlaces de navegación */}
         <ul className="flex flex-wrap justify-center space-x-8">
@@ -52,20 +63,6 @@ export default function Footer() {
             className="hover:text-blue-500 transition"
           >
             <FaFacebookF />
-          </a>
-          <a
-            href="https://twitter.com"
-            aria-label="X"
-            className="hover:text-blue-500 transition"
-          >
-            <SiX />
-          </a>
-          <a
-            href="https://youtube.com"
-            aria-label="YouTube"
-            className="hover:text-blue-500 transition"
-          >
-            <FaYoutube />
           </a>
         </div>
 
