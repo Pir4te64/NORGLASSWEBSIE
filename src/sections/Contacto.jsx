@@ -1,5 +1,6 @@
 // src/sections/Contacto.jsx
 import React, { useState } from "react";
+import emailjs from "emailjs-com";
 // Si prefieres importar la imagen desde src/assets:
 // import contactoHero from '../assets/contacto-hero.jpg';
 
@@ -16,8 +17,17 @@ export default function Contacto() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí tu lógica de envío (API, email, etc.)
-    console.log("Formulario enviado:", form);
+    emailjs
+      .sendForm("TU_SERVICE_ID", "TU_TEMPLATE_ID", e.target, "TU_PUBLIC_KEY")
+      .then(
+        (result) => {
+          alert("¡Mensaje enviado correctamente!");
+          setForm({ nombre: "", email: "", telefono: "", mensaje: "" });
+        },
+        (error) => {
+          alert("Error al enviar el mensaje. Intenta nuevamente.");
+        }
+      );
   };
 
   return (
