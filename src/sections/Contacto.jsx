@@ -1,8 +1,20 @@
 // src/sections/Contacto.jsx
 import React, { useState } from "react";
-import emailjs from "@emailjs/browser";
 // Si prefieres importar la imagen desde src/assets:
 // import contactoHero from '../assets/contacto-hero.jpg';
+
+// Configuración de EmailJS:
+// 1. Crear una cuenta en https://www.emailjs.com/
+// 2. Crear un servicio de email (Gmail, Outlook, etc.)
+// 3. Crear una plantilla de email
+// 4. Obtener las credenciales:
+//    - Service ID: En la sección "Email Services"
+//    - Template ID: En la sección "Email Templates"
+//    - Public Key: En la sección "Account" > "API Keys"
+// 5. Crear un archivo .env en la raíz del proyecto y agregar:
+//    VITE_EMAILJS_SERVICE_ID=tu_service_id
+//    VITE_EMAILJS_TEMPLATE_ID=tu_template_id
+//    VITE_EMAILJS_PUBLIC_KEY=tu_public_key
 
 export default function Contacto() {
   const [form, setForm] = useState({
@@ -17,8 +29,20 @@ export default function Contacto() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // EmailJS temporalmente desactivado
+    alert(
+      "El formulario de contacto está temporalmente desactivado. Por favor, contáctenos por teléfono o email."
+    );
+    setForm({ nombre: "", email: "", telefono: "", mensaje: "" });
+
+    /* EmailJS desactivado temporalmente
     emailjs
-      .sendForm("TU_SERVICE_ID", "TU_TEMPLATE_ID", e.target, "TU_PUBLIC_KEY")
+      .sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        e.target,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
       .then(
         (result) => {
           alert("¡Mensaje enviado correctamente!");
@@ -28,6 +52,7 @@ export default function Contacto() {
           alert("Error al enviar el mensaje. Intenta nuevamente.");
         }
       );
+    */
   };
 
   return (
