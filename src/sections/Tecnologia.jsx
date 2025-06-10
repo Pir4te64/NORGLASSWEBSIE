@@ -7,7 +7,7 @@ import "swiper/css/navigation";
 
 const products = [
   {
-    title: "Vidrios Laminados 3+3",
+    title: "Vidrios Laminados",
     img: "/10.png",
     bullets: [
       "Compuesto por dos capas de vidrio de 3 mm unidas por una lámina de PVB.",
@@ -50,8 +50,8 @@ export default function Tecnologia() {
   // Forzar actualización de Swiper en resize
   useEffect(() => {
     const handleResize = () => {
-      if (swiperRef.current && swiperRef.current.update) {
-        swiperRef.current.update();
+      if (swiperRef.current && swiperRef.current.swiper) {
+        swiperRef.current.swiper.update();
       }
     };
     window.addEventListener("resize", handleResize);
@@ -79,38 +79,37 @@ export default function Tecnologia() {
           </div>
 
           {/* Carrusel de tarjetas con Swiper y flechas minimalistas para escritorio */}
-          <div className="relative w-full hidden md:flex items-center">
-            <button
-              className="absolute left-0 z-20 bg-white border border-gray-300 rounded-full w-12 h-12 flex items-center justify-center shadow hover:bg-blue-100 transition-all"
-              style={{ transform: "translateX(-60%)" }}
-              onClick={() => swiperRef.current?.slidePrev()}
-              aria-label="Anterior"
-            >
-              <svg
-                width="28"
-                height="28"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#3b82f6"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+          <div className="relative w-full hidden md:block">
+            <div className="absolute inset-y-0 left-0 flex items-center">
+              <button
+                className="z-20 bg-white border border-gray-300 rounded-full w-12 h-12 flex items-center justify-center shadow hover:bg-blue-100 transition-all"
+                style={{ transform: "translateX(-60%)" }}
+                onClick={() => swiperRef.current?.swiper?.slidePrev()}
+                aria-label="Anterior"
               >
-                <polyline points="15 18 9 12 15 6" />
-              </svg>
-            </button>
+                <svg
+                  width="28"
+                  height="28"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#3b82f6"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <polyline points="15 18 9 12 15 6" />
+                </svg>
+              </button>
+            </div>
             <Swiper
+              ref={swiperRef}
               modules={[Navigation, Autoplay]}
               spaceBetween={48}
               slidesPerView={2}
-              onSwiper={(swiper) => {
-                swiperRef.current = swiper;
-              }}
               autoplay={{ delay: 4000, disableOnInteraction: false }}
               className="!pb-10"
               navigation={false}
               breakpoints={{
-                0: { slidesPerView: 1 },
                 1024: { slidesPerView: 2 },
               }}
             >
@@ -145,65 +144,64 @@ export default function Tecnologia() {
                 </SwiperSlide>
               ))}
             </Swiper>
-            <button
-              className="absolute right-0 z-20 bg-white border border-gray-300 rounded-full w-12 h-12 flex items-center justify-center shadow hover:bg-blue-100 transition-all"
-              style={{ transform: "translateX(60%)" }}
-              onClick={() => swiperRef.current?.slideNext()}
-              aria-label="Siguiente"
-            >
-              <svg
-                width="28"
-                height="28"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#3b82f6"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+            <div className="absolute inset-y-0 right-0 flex items-center">
+              <button
+                className="z-20 bg-white border border-gray-300 rounded-full w-12 h-12 flex items-center justify-center shadow hover:bg-blue-100 transition-all"
+                style={{ transform: "translateX(60%)" }}
+                onClick={() => swiperRef.current?.swiper?.slideNext()}
+                aria-label="Siguiente"
               >
-                <polyline points="9 18 15 12 9 6" />
-              </svg>
-            </button>
+                <svg
+                  width="28"
+                  height="28"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#3b82f6"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </button>
+            </div>
           </div>
 
           {/* Carrusel especial para mobile, alineado con el contenedor */}
-          <div className="flex md:hidden w-full">
+          <div className="block md:hidden w-full">
             <Swiper
               modules={[Autoplay]}
-              spaceBetween={12}
+              spaceBetween={24}
               slidesPerView={1}
               centeredSlides
               autoplay={{ delay: 4000, disableOnInteraction: false }}
               className="!pb-10 w-full"
               observer={true}
               observeParents={true}
-              onSwiper={(swiper) => {
-                swiperRef.current = swiper;
-              }}
             >
               {products.map((p) => (
                 <SwiperSlide
                   key={p.title}
                   className="flex justify-center w-full"
                 >
-                  <div className="bg-white rounded-2xl border border-blue-300 shadow-sm p-2 flex flex-col min-h-[220px] w-full">
+                  <div className="bg-white rounded-2xl border border-blue-300 shadow-sm p-4 flex flex-col min-h-[400px] w-full">
                     <div>
-                      <div className="h-[100px] w-full mb-2">
+                      <div className="h-[200px] w-full mb-4">
                         <img
                           src={p.img}
                           alt={p.title}
                           className="w-full h-full object-cover rounded-xl"
                         />
                       </div>
-                      <div className="px-1 pb-1 text-left">
-                        <h3 className="text-base font-bold text-gray-900 mb-1">
+                      <div className="px-2 pb-2 text-left">
+                        <h3 className="text-lg font-bold text-gray-900 mb-2">
                           {p.title}
                         </h3>
-                        <ul className="space-y-1">
+                        <ul className="space-y-2">
                           {p.bullets.map((b) => (
                             <li
                               key={b}
-                              className="text-gray-600 leading-relaxed text-xs"
+                              className="text-gray-600 leading-relaxed text-sm"
                             >
                               {b}
                             </li>
@@ -218,11 +216,6 @@ export default function Tecnologia() {
           </div>
         </div>
       </div>
-      <style>
-        {`
-.swiper-button-next, .swiper-button-prev { display: none !important; }
-`}
-      </style>
     </section>
   );
 }
