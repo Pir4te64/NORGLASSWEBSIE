@@ -23,6 +23,12 @@ export default function Footer() {
             alt="Guardian Glass"
             className="h-16 sm:h-20 w-auto invert brightness-0"
           />
+ <img
+            src="/evo4.png"
+            alt="Evoglass"
+            className="h-16 sm:h-20 w-auto invert brightness-0"
+          />
+          
           <img
             src="/Grupodracena.png"
             alt="Dracena"
