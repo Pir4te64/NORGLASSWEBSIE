@@ -1,39 +1,55 @@
 import React from "react";
 import { FaInstagram, FaFacebookF } from "react-icons/fa";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
+
+const logos = [
+  { src: "/logo.svg", alt: "Norglass logo" },
+  { src: "/agc-glass-seeklogo.svg", alt: "AGC Glass" },
+  { src: "/guardian-glass-seeklogo.svg", alt: "Guardian Glass" },
+  { src: "/evoglass4.png", alt: "Evoglass" },
+  { src: "/Grupodracena.png", alt: "Dracena" },
+];
 
 export default function Footer() {
   return (
     <footer className="w-screen bg-black text-white py-10">
       {/* Contenedor centrado con ancho máximo */}
       <div className="max-w-screen-xl mx-auto px-4 flex flex-col items-center space-y-6">
-        {/* Logos */}
-        <div className="grid grid-cols-1 gap-6 items-center justify-items-center sm:flex sm:items-center sm:justify-center sm:space-x-12 sm:gap-0 sm:grid-cols-1 w-full">
-          <img
-            src="/logo.svg"
-            alt="Norglass logo"
-            className="h-3 sm:h-4 w-auto invert brightness-0"
-          />
-          <img
-            src="/agc-glass-seeklogo.svg"
-            alt="AGC Glass"
-            className="h-12 sm:h-14 w-auto invert brightness-0"
-          />
-          <img
-            src="/guardian-glass-seeklogo.svg"
-            alt="Guardian Glass"
-            className="h-16 sm:h-20 w-auto invert brightness-0"
-          />
- <img
-            src="/evoglass4.png"
-            alt="Evoglass"
-            className="h-14 sm:h-20 mt-1 w-auto invert brightness-0"
-          />
-          
-          <img
-            src="/Grupodracena.png"
-            alt="Dracena"
-            className="h-14 sm:h-10 w-auto invert brightness-0 object-contain object-top"
-          />
+        {/* Logos - Mobile Carrusel */}
+        <div className="w-full block sm:hidden">
+          <Swiper
+            modules={[Autoplay]}
+            spaceBetween={24}
+            slidesPerView={2}
+            autoplay={{ delay: 1800, disableOnInteraction: false }}
+            loop={true}
+            className="w-full"
+          >
+            {logos.map((logo) => (
+              <SwiperSlide key={logo.alt} className="flex justify-center items-center">
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="h-16 w-32 object-contain invert brightness-0"
+                  style={{ maxWidth: '8rem', minWidth: '6rem' }}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+        {/* Logos - Desktop fila única */}
+        <div className="w-full hidden sm:flex justify-center items-center gap-12">
+          {logos.map((logo) => (
+            <img
+              key={logo.alt}
+              src={logo.src}
+              alt={logo.alt}
+              className="h-16 w-32 object-contain invert brightness-0"
+              style={{ maxWidth: '8rem', minWidth: '6rem' }}
+            />
+          ))}
         </div>
 
         {/* Enlaces de navegación */}
