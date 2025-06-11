@@ -24,9 +24,9 @@ export default function Footer() {
             className="h-16 sm:h-20 w-auto invert brightness-0"
           />
  <img
-            src="/evo4.png"
+            src="/evoglass4.png"
             alt="Evoglass"
-            className="h-16 sm:h-20 mt-2 w-auto invert brightness-0"
+            className="h-14 sm:h-20 mt-1 w-auto invert brightness-0"
           />
           
           <img
