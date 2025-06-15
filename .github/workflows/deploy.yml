@@ -6,7 +6,7 @@ on:
       - master
 
 permissions:
-  contents: write # <--- Permiso para escribir contenido en el repo
+  contents: write  # <--- Permiso para escribir contenido en el repo
 
 jobs:
   deploy:
@@ -23,7 +23,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18" # Ajusta según tu proyecto
+          node-version: '18'  # Ajusta según tu proyecto
 
       - name: Install dependencies and build
         run: |
@@ -41,36 +41,24 @@ jobs:
             git push origin --delete production
           fi
 
-          # Crea la rama 'production' basada en 'master'
+          # Crea la rama 'production' basada en 'main'
           git checkout -b production
 
       # 4️⃣ Borrar todo y copiar solo los archivos de la build
       - name: Clean branch and copy dist content
         run: |
+          # Elimina los archivos rastreados por Git
           git rm -rf . || true
-
-          # Copia el contenido de 'dist' a la raíz
+          
+          # Copia el contenido de 'dist' (o 'build') a la raíz
           cp -r dist/* .
 
-          # ✅ Crear el archivo .htaccess en la raíz
-          cat <<EOF > .htaccess
-          <IfModule mod_rewrite.c>
-            RewriteEngine On
-            RewriteBase /
-
-            RewriteCond %{REQUEST_FILENAME} -f [OR]
-            RewriteCond %{REQUEST_FILENAME} -d
-            RewriteRule ^ - [L]
-
-            RewriteRule ^ index.html [L]
-          </IfModule>
-          EOF
-
-          # Limpieza
+          # Borra 'dist' y 'node_modules'
           rm -rf dist node_modules
 
+          # Agrega y confirma los cambios
           git add .
-          git commit -m "Deploy production from master"
+          git commit -m "Deploy production from main"
 
       # 5️⃣ Empujar los cambios a la rama "production"
       - name: Push to production branch
@@ -84,5 +72,5 @@ jobs:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./ # <-- Sube la raíz (que contiene el build)
+          local-dir: ./            # <-- Sube la raíz (que contiene el build)
           server-dir: /public_html/
