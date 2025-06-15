@@ -61,7 +61,7 @@ export default function Tecnologia() {
   return (
     <section
       id="tecnologia"
-      className="min-h-screen bg-blue-50 flex items-center"
+      className="min-h-screen bg-blue-50 flex items-center pb-4"
     >
       <div className="max-w-7xl mx-auto w-full px-4 md:px-32 py-20">
         <div className="space-y-12 w-full">
