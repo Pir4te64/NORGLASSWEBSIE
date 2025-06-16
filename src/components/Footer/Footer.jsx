@@ -89,7 +89,7 @@ export default function Footer() {
             <FaInstagram />
           </a>
           <a
-            href="https://facebook.com"
+            href="https://www.facebook.com/norglassvidrios/"
             aria-label="Facebook"
             className="hover:text-blue-500 transition"
           >
