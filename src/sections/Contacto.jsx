@@ -1,6 +1,6 @@
 // src/sections/Contacto.jsx
 import React, { useState } from "react";
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 // Si prefieres importar la imagen desde src/assets:
 // import contactoHero from '../assets/contacto-hero.jpg';
 
@@ -24,29 +24,40 @@ export default function Contacto() {
     telefono: "",
     mensaje: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
 
   const handleChange = (e) =>
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    setSubmitStatus(null);
     
-    emailjs
-      .sendForm(
+    try {
+      const result = await emailjs.sendForm(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         e.target,
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-      )
-      .then(
-        (result) => {
-          alert("¡Mensaje enviado correctamente!");
-          setForm({ nombre: "", email: "", telefono: "", mensaje: "" });
-        },
-        (error) => {
-          alert("Error al enviar el mensaje. Intenta nuevamente.");
-        }
       );
+      
+      if (result.text === 'OK') {
+        setSubmitStatus({ type: 'success', message: '¡Mensaje enviado correctamente!' });
+        setForm({ nombre: "", email: "", telefono: "", mensaje: "" });
+      } else {
+        setSubmitStatus({ type: 'error', message: 'Error al enviar el mensaje. Intenta nuevamente.' });
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setSubmitStatus({ 
+        type: 'error', 
+        message: 'Error al enviar el mensaje. Por favor, intenta nuevamente más tarde.' 
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -74,6 +85,7 @@ export default function Contacto() {
               onChange={handleChange}
               className="w-full h-12 px-4 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
+              disabled={isLoading}
             />
             <input
               type="email"
@@ -83,6 +95,7 @@ export default function Contacto() {
               onChange={handleChange}
               className="w-full h-12 px-4 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
+              disabled={isLoading}
             />
             <input
               type="tel"
@@ -92,6 +105,7 @@ export default function Contacto() {
               onChange={handleChange}
               className="w-full h-12 px-4 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
+              disabled={isLoading}
             />
             <textarea
               name="mensaje"
@@ -101,12 +115,23 @@ export default function Contacto() {
               onChange={handleChange}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
               required
+              disabled={isLoading}
             />
+            {submitStatus && (
+              <div className={`p-4 rounded-lg ${
+                submitStatus.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
+              }`}>
+                {submitStatus.message}
+              </div>
+            )}
             <button
               type="submit"
-              className="mt-2 inline-block bg-blue-600 text-white font-medium px-6 py-3 rounded-lg hover:bg-blue-700 transition"
+              className={`mt-2 inline-block bg-blue-600 text-white font-medium px-6 py-3 rounded-lg transition ${
+                isLoading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-700'
+              }`}
+              disabled={isLoading}
             >
-              Enviar información
+              {isLoading ? 'Enviando...' : 'Enviar información'}
             </button>
           </form>
         </div>
