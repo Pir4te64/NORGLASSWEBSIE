@@ -1,5 +1,6 @@
 // src/sections/Contacto.jsx
 import React, { useState } from "react";
+import emailjs from 'emailjs-com';
 // Si prefieres importar la imagen desde src/assets:
 // import contactoHero from '../assets/contacto-hero.jpg';
 
@@ -29,13 +30,7 @@ export default function Contacto() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // EmailJS temporalmente desactivado
-    alert(
-      "El formulario de contacto está temporalmente desactivado. Por favor, contáctenos por teléfono o email."
-    );
-    setForm({ nombre: "", email: "", telefono: "", mensaje: "" });
-
-    /* EmailJS desactivado temporalmente
+    
     emailjs
       .sendForm(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
@@ -52,7 +47,6 @@ export default function Contacto() {
           alert("Error al enviar el mensaje. Intenta nuevamente.");
         }
       );
-    */
   };
 
   return (
